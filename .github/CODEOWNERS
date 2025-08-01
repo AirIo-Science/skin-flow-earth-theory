@@ -1,0 +1,22 @@
+# Skin-Flow Earth Theory - Code Ownership
+# Original Theorist: Koji Natsu, Ph.D., M.D.
+# 
+# All changes to this repository require approval from the repository owner
+
+# Default owner for everything in the repo
+* @AirIo-Science
+
+# Critical files that define the theory and attribution
+/README.md @AirIo-Science
+/ATTRIBUTION.md @AirIo-Science
+/LICENSE @AirIo-Science
+
+# Academic papers and theory documentation
+/papers/ @AirIo-Science
+/public_articles/ @AirIo-Science
+
+# Presentation materials
+/presentations/ @AirIo-Science
+
+# Even minor files require approval to maintain integrity
+/.github/ @AirIo-Science
