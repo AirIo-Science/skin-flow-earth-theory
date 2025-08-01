@@ -52,16 +52,16 @@ We describe the Earth system using coupled partial differential equations for a 
 
 **Mantle dynamics:**
 ```
-∇·σₘ + ρₘg = 0
-σₘ = -pI + μₘ(∇v + ∇vᵀ)
-∇·v = 0
+∇・σm + ρm g = 0
+σm = -pI + μm(∇v + (∇v)^T)
+∇・v = 0
 ```
 
 **Crustal mechanics:**
 ```
-∇·σc + ρcg + fc = 0
+∇・σc + ρc g + fc = 0
 σc = C:ε (elastic regime)
-σc = σy + η(∇v + ∇vᵀ) (plastic regime)
+σc = σy + η(∇v + (∇v)^T) (plastic regime)
 ```
 
 Where coupling occurs through continuity of velocity and traction at the crust-mantle interface.
