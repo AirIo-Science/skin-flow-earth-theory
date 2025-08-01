@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>スキン・フロー地球理論 - プレゼンテーション</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: #1a1a1a;
+            color: #fff;
+            overflow: hidden;
+        }
+        
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide {
+            display: none;
+            width: 90%;
+            max-width: 1200px;
+            height: 90vh;
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+        }
+        
+        .slide.active {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        h1 {
+            font-size: 3.5em;
+            margin-bottom: 30px;
+            color: #ecf0f1;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        h3 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #e74c3c;
+        }
+        
+        p, li {
+            font-size: 1.4em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        ul {
+            list-style: none;
+            padding-left: 20px;
+        }
+        
+        li:before {
+            content: "▶ ";
+            color: #3498db;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .emphasis {
+            background: linear-gradient(45deg, #e74c3c, #f39c12);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .diagram {
+            width: 100%;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+        
+        button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        button:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        button:disabled {
+            background: #7f8c8d;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .slide-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 1.2em;
+            color: #95a5a6;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            margin: 30px 0;
+            border-collapse: collapse;
+        }
+        
+        .comparison-table th,
+        .comparison-table td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .comparison-table th {
+            background: rgba(52,152,219,0.3);
+            font-size: 1.3em;
+        }
+        
+        .comparison-table td {
+            background: rgba(255,255,255,0.05);
+        }
+        
+        .title-slide {
+            text-align: center;
+        }
+        
+        .title-slide h1 {
+            font-size: 4em;
+            margin-bottom: 40px;
+        }
+        
+        .title-slide .subtitle {
+            font-size: 2em;
+            color: #bdc3c7;
+            margin-bottom: 60px;
+        }
+        
+        .flow-animation {
+            width: 600px;
+            height: 400px;
+            margin: 40px auto;
+            position: relative;
+            background: linear-gradient(to bottom, #34495e 0%, #e74c3c 50%, #f39c12 100%);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+        
+        .flow-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: flow 3s infinite;
+        }
+        
+        @keyframes flow {
+            to {
+                left: 100%;
+            }
+        }
+        
+        .crust-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(to bottom, #95a5a6, #7f8c8d);
+            border-top: 3px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2em;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation">
+        <!-- スライド1: タイトル -->
+        <div class="slide active title-slide">
+            <h1>スキン・フロー地球理論</h1>
+            <p class="subtitle">プレートテクトニクスを超えた新しい地球観</p>
+            <p style="font-size: 1.5em; color: #3498db;">地球の表層ダイナミクスの再定義</p>
+            <div class="slide-number">1 / 12</div>
+        </div>
+
+        <!-- スライド2: 問題提起 -->
+        <div class="slide">
+            <h2>現在の地球科学の課題</h2>
+            <ul>
+                <li>プレート内部での大地震の発生</li>
+                <li>チベット高原のような広域変形帯</li>
+                <li>GPS観測が示す複雑な変形パターン</li>
+                <li>深発地震の連続的分布</li>
+            </ul>
+            <p class="emphasis" style="margin-top: 40px;">これらは従来のプレートテクトニクスでは説明が困難</p>
+            <div class="slide-number">2 / 12</div>
+        </div>
+
+        <!-- スライド3: 新理論の概要 -->
+        <div class="slide">
+            <h2>スキン・フロー地球理論とは？</h2>
+            <div class="diagram">
+                <h3>基本概念</h3>
+                <p>地殻 = 冷えて固まった薄い「表皮（スキン）」</p>
+                <p>マントル = 連続的に流動する高粘性流体</p>
+                <p>プレート境界 = 応力集中による破断帯</p>
+            </div>
+            <p class="emphasis">地表の動きは内部流動の表面現象</p>
+            <div class="slide-number">3 / 12</div>
+        </div>
+
+        <!-- スライド4: アニメーション図解 -->
+        <div class="slide">
+            <h2>地球内部の動きを可視化</h2>
+            <div class="flow-animation">
+                <div class="crust-layer">地殻（5-70km）</div>
+            </div>
+            <p style="text-align: center; margin-top: 30px;">マントルの対流が地表の変形を支配</p>
+            <div class="slide-number">4 / 12</div>
+        </div>
+
+        <!-- スライド5: 理論比較 -->
+        <div class="slide">
+            <h2>従来理論との比較</h2>
+            <table class="comparison-table">
+                <tr>
+                    <th>項目</th>
+                    <th>プレートテクトニクス</th>
+                    <th>スキン・フロー理論</th>
+                </tr>
+                <tr>
+                    <td>地殻の性質</td>
+                    <td>剛体プレート</td>
+                    <td>変形可能な表皮</td>
+                </tr>
+                <tr>
+                    <td>境界の性質</td>
+                    <td>明確な不連続面</td>
+                    <td>応力集中帯</td>
+                </tr>
+                <tr>
+                    <td>駆動力</td>
+                    <td>プレート間相互作用</td>
+                    <td>マントル流動</td>
+                </tr>
+                <tr>
+                    <td>変形様式</td>
+                    <td>境界集中型</td>
+                    <td>連続分布型</td>
+                </tr>
+            </table>
+            <div class="slide-number">5 / 12</div>
+        </div>
+
+        <!-- スライド6: 数学的基礎 -->
+        <div class="slide">
+            <h2>理論の数学的基礎</h2>
+            <div class="diagram">
+                <h3>支配方程式</h3>
+                <p>マントル：ナビエ・ストークス方程式（高粘性近似）</p>
+                <p>地殻：粘弾性構成則（Maxwell型）</p>
+                <p>結合：境界での速度・応力の連続性</p>
+            </div>
+            <ul>
+                <li>レイリー数：Ra ≈ 10⁶-10⁷</li>
+                <li>時間スケール：10⁰-10⁸年</li>
+                <li>空間スケール：10⁰-10⁴km</li>
+            </ul>
+            <div class="slide-number">6 / 12</div>
+        </div>
+
+        <!-- スライド7: 事例研究1 -->
+        <div class="slide">
+            <h2>事例研究：ヒマラヤ山脈</h2>
+            <h3>従来の説明</h3>
+            <p>インドプレートとユーラシアプレートの衝突</p>
+            <h3 style="margin-top: 40px;">新しい解釈</h3>
+            <ul>
+                <li>マントル収束流による圧縮応力場</li>
+                <li>地殻の肥厚はアイソスタティック応答</li>
+                <li>「衝突」ではなく「圧縮場での浮力応答」</li>
+            </ul>
+            <div class="slide-number">7 / 12</div>
+        </div>
+
+        <!-- スライド8: 事例研究2 -->
+        <div class="slide">
+            <h2>事例研究：日本列島</h2>
+            <h3>新しい視点での理解</h3>
+            <ul>
+                <li>マントル下降流が海洋地殻を引き込む</li>
+                <li>「沈み込み」は表面現象の一部</li>
+                <li>背弧での分散変形も統一的に説明</li>
+            </ul>
+            <p class="emphasis" style="margin-top: 40px;">複雑な地震分布パターンがより自然に説明可能</p>
+            <div class="slide-number">8 / 12</div>
+        </div>
+
+        <!-- スライド9: 検証可能な予測 -->
+        <div class="slide">
+            <h2>検証可能な予測</h2>
+            <ul>
+                <li><strong>地震分布：</strong>マントル流速勾配との相関（R² > 0.7）</li>
+                <li><strong>GPS観測：</strong>連続的な速度場（残差 < 5mm/年）</li>
+                <li><strong>火山分布：</strong>マントル上昇流との対応</li>
+                <li><strong>重力異常：</strong>深部構造との整合性</li>
+            </ul>
+            <p class="emphasis" style="margin-top: 40px;">明確な判定基準により理論の妥当性を検証</p>
+            <div class="slide-number">9 / 12</div>
+        </div>
+
+        <!-- スライド10: 実用的応用 -->
+        <div class="slide">
+            <h2>社会への貢献</h2>
+            <h3>1. 地震災害予測の高度化</h3>
+            <p>応力集中帯の特定による新たなリスク評価</p>
+            <h3>2. 資源探査への応用</h3>
+            <p>マントル流動と鉱床形成の関係解明</p>
+            <h3>3. 長期地形変化予測</h3>
+            <p>気候変動に伴う地殻応答の精密化</p>
+            <div class="slide-number">10 / 12</div>
+        </div>
+
+        <!-- スライド11: 研究計画 -->
+        <div class="slide">
+            <h2>今後の研究計画</h2>
+            <div class="diagram">
+                <p><strong>Phase 1 (1-3年):</strong> 理論構築と初期検証</p>
+                <p><strong>Phase 2 (3-7年):</strong> 観測網構築と本格検証</p>
+                <p><strong>Phase 3 (7-10年):</strong> 理論の確立または修正</p>
+            </div>
+            <ul style="margin-top: 30px;">
+                <li>国際共同研究の推進</li>
+                <li>最新観測技術の活用</li>
+                <li>オープンサイエンスの実践</li>
+            </ul>
+            <div class="slide-number">11 / 12</div>
+        </div>
+
+        <!-- スライド12: 結論 -->
+        <div class="slide">
+            <h2>結論</h2>
+            <p class="emphasis" style="font-size: 1.8em; text-align: center; margin-bottom: 40px;">
+                地球を理解する新しい窓
+            </p>
+            <ul>
+                <li>プレートテクトニクスの成功を継承</li>
+                <li>より包括的な地球観を提供</li>
+                <li>検証可能な科学理論として提案</li>
+                <li>地球科学の新たな発展への貢献</li>
+            </ul>
+            <p style="text-align: center; margin-top: 60px; font-size: 1.3em; color: #3498db;">
+                ご清聴ありがとうございました
+            </p>
+            <div class="slide-number">12 / 12</div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button id="prevBtn" onclick="changeSlide(-1)">前へ</button>
+        <button id="nextBtn" onclick="changeSlide(1)">次へ</button>
+        <button onclick="toggleFullscreen()">全画面</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+            
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // キーボード操作
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeSlide(-1);
+            if (e.key === 'ArrowRight') changeSlide(1);
+            if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+        });
+
+        // 初期表示
+        showSlide(0);
+    </script>
+</body>
+</html>
