@@ -116,10 +116,10 @@ Please see CONTRIBUTING.md for details.
 **必須**: この理論に基づくすべての作品は、夏恒治博士を原理論者として明記する必要があります。
 
 ```bibtex
-@misc{natsu2024sfet,
+@misc{natsu2025sfet,
   author = {Natsu, Koji},
   title = {Skin-Flow Earth Theory: A New Framework for Earth's Surface Dynamics},
-  year = {2024},
+  year = {2025},
   url = {https://github.com/AirIo-Science/skin-flow-earth-theory}
 }
 ```
@@ -164,4 +164,4 @@ This theory was originally conceived by Dr. Koji Natsu. The repository is mainta
 **注記**: このリポジトリは原理論の参照用としてのみ機能します。研究の発展は科学コミュニティに委ねられています。
 
 **Repository Version**: 1.0 (Original Theory)  
-**Last Updated**: 2024
+**Last Updated**: 2025
